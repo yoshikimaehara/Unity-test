@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Author : MonoBehaviour,IAutohr
 {
+    public const int MOVING = 1;
+    public const int ATTACK = 2;
+    public const int USEITEM = 3;
+
     public const int DONTMOVE = -1;
     public const int LOWERLEFT = 1;
     public const int DOWN = 2;
@@ -12,23 +16,18 @@ public class Author : MonoBehaviour,IAutohr
     public const int LEFTUP = 7;
     public const int UP = 8;
     public const int RIGHTUP = 9;
-
+    
     public bool isMoving = false;               // 移動中管理フラグ
-    protected Animator animator;	               // 表示するアニメーションを設定
-    protected Rigidbody2D rb2D;                  // RigidBodyの設定
+    protected Animator animator;	            // 表示するアニメーションを設定
+    protected Rigidbody2D rb2D;                 // RigidBodyの設定
     protected float inverseMoveTime;              
     private int currentDir = 0;                 // 現在向いている方向
     public float moveTime = 0.1f;               // 移動にかける時間
-    private int distanceX = 15;                 // 一度の移動で移動するX軸の距離
-    private int distanceY = 15;                 // 一度の移動で移動するY軸の距離
-
-#region TestCode definition
-    //TestCode用ブロック
+    protected int distanceX = 5;                 // 一度の移動で移動するX軸の距離
+    protected int distanceY = 5;                 // 一度の移動で移動するY軸の距離
     private float startTime = 2.0f; // seconds
     private float timer;
-    int counter = 1;
-#endregion
-
+    protected Vector3 nextPosition;
 
 	// Use this for initialization
 	void Start () {
@@ -154,13 +153,15 @@ public class Author : MonoBehaviour,IAutohr
         }
         #endregion switchdirection
 
-        TurnControl.instance.playerMoving = true;
+        TurnControl.instance.isPlayerMovingFinish = true;
         Vector2 start = transform.position;
         Vector3 end = start + new Vector2(distanceX * dirX, distanceY * dirY);
+        nextPosition = end;
         StartCoroutine(SmoothMovement(end));
         return true;
     }
 
+    
 
     protected IEnumerator SmoothMovement(Vector3 end)
     {
@@ -199,4 +200,8 @@ public class Author : MonoBehaviour,IAutohr
         throw new System.NotImplementedException();
     }
 
+    public Vector3 getNextPosition()
+    {
+        return nextPosition;
+    }
 }

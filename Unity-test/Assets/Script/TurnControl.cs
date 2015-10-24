@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TurnControl : MonoBehaviour {
 
@@ -7,15 +8,14 @@ public class TurnControl : MonoBehaviour {
     [HideInInspector]
     public bool playerTurn = true; // ターン管理フラグ
     [HideInInspector]
-    public bool playerMoving = false; // Playerの移動中フラグ
+    public bool isPlayerMovingFinish = false; // Playerの移動中フラグ
     private InputController inputController;
     public bool enemyTurn = false;
     public bool enemyMoving = false;
     
+    private EnemyGroup enemyGroup = new EnemyGroup();
     private Player player;
-    private Enemy enemy;
     private GameObject playerObj;
-    private GameObject enemyObj;
 
 	// Use this for initialization
 	void Start () {
@@ -23,15 +23,14 @@ public class TurnControl : MonoBehaviour {
         inputController = new InputController();
         playerObj = GameObject.Find("Player");
         player = playerObj.GetComponent<Player>();
-        enemyObj = GameObject.Find("Dragon");
-        enemy = enemyObj.GetComponent<Enemy>();
+        enemyGroup.init();
+        enemyGroup.generateEnemy();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         turn();
 	}
-
     
     private void initGame()
     {
@@ -40,24 +39,23 @@ public class TurnControl : MonoBehaviour {
 
     private void turn()
     {
-        int input = 0;
-        if (playerTurn)
+        if (enemyGroup.isEnemysMovingFinish() && isPlayerMovingFinish)
         {
-            Debug.Log("PlayerTurn");
-            if (!playerMoving && !enemy.isMoving)
+            inputController.checkInputKey();
+
+            inputController.checkInputKey();
+            if (inputController.inputType == Author.MOVING)
             {
-                Debug.Log("PlayerMoving");
-                input = inputController.checkInputKey();
-                player.AttemptMove(input);
-            }
-        }
-        else
-        {
-            if (!playerMoving) {
-                int enemyDir = enemy.getDir(player.transform.position);
-                enemy.AttemptMove(enemyDir);
+                player.AttemptMove(inputController.movingDir);
+                enemyGroup.enemysDecisionAction(player.getNextPosition());
+                enemyGroup.enemysDoAction(player.getNextPosition());
                 playerTurn = true;
             }
         }
+    }
+
+    private void initEnemy()
+    {
+
     }
 }

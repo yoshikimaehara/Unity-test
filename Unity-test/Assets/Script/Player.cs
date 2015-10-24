@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player : Author {
 
+
+
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
@@ -15,19 +17,17 @@ public class Player : Author {
         if (base.isMoving)
         {
             Debug.Log("Moving");
-            TurnControl.instance.playerMoving = true;
+            TurnControl.instance.isPlayerMovingFinish = false;
             TurnControl.instance.playerTurn = false;
         }
         else
         {
-            TurnControl.instance.playerMoving = false;
+            TurnControl.instance.isPlayerMovingFinish = true;
         }
 	}
 
     public bool AttemptMove(int direction)
     {
-        int dirX = 1;   //directionによってX軸の方向を設定する。
-        int dirY = 1;   //directionによってY軸の方向を設定する。
         inverseMoveTime = 1f / moveTime;
         TurnControl.instance.playerTurn = true;
         if (Move(direction))
