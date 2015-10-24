@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\Completed\Scripts\BoardManager.cs" />
      <Compile Include="Assets\Completed\Scripts\Enemy.cs" />
-     <Compile Include="Assets\Completed\Scripts\EnemyGroup.cs" />
      <Compile Include="Assets\Completed\Scripts\GameManager.cs" />
      <Compile Include="Assets\Completed\Scripts\Loader.cs" />
      <Compile Include="Assets\Completed\Scripts\MovingObject.cs" />
@@ -59,6 +58,7 @@
      <Compile Include="Assets\Script\Author.cs" />
      <Compile Include="Assets\Script\Enemy.cs" />
      <Compile Include="Assets\Script\EnemyData.cs" />
+     <Compile Include="Assets\Script\EnemyGroup.cs" />
      <Compile Include="Assets\Script\InputController.cs" />
      <Compile Include="Assets\Script\Player.cs" />
      <Compile Include="Assets\Script\TurnControl.cs" />
