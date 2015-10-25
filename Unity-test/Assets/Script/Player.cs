@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Player : Author {
-
+                                        
 
 
 	// Use this for initialization

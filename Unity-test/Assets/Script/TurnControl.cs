@@ -12,7 +12,8 @@ public class TurnControl : MonoBehaviour {
     private InputController inputController;
     public bool enemyTurn = false;
     public bool enemyMoving = false;
-    
+
+    private Map map = new Map();
     private EnemyGroup enemyGroup = new EnemyGroup();
     private Player player;
     private GameObject playerObj;
@@ -23,6 +24,9 @@ public class TurnControl : MonoBehaviour {
         inputController = new InputController();
         playerObj = GameObject.Find("Player");
         player = playerObj.GetComponent<Player>();
+
+        map.initMap();
+        map.mapGenerate();
         enemyGroup.init();
         enemyGroup.generateEnemy();
 	}

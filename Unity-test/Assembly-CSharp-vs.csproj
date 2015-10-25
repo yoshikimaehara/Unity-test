@@ -60,7 +60,9 @@
      <Compile Include="Assets\Script\EnemyData.cs" />
      <Compile Include="Assets\Script\EnemyGroup.cs" />
      <Compile Include="Assets\Script\InputController.cs" />
+     <Compile Include="Assets\Script\Map.cs" />
      <Compile Include="Assets\Script\Player.cs" />
+     <Compile Include="Assets\Script\Room.cs" />
      <Compile Include="Assets\Script\TurnControl.cs" />
      <Compile Include="Assets\aaaaa.cs" />
      <None Include="Assets\Fonts\OFL.txt" />

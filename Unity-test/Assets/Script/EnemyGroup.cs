@@ -13,14 +13,15 @@ public class EnemyGroup : MonoBehaviour {
     private List<List<Enemy>> enemy = new List<List<Enemy>>();        // enemyClass List
     private List<List<GameObject>> enemyObj = new List<List<GameObject>>();     // enemy GameObjectList
     private List<Vector3> posList = new List<Vector3>();
-
+                 
 	// Use this for initialization
 	void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {                                           
+
 	
 	}
 
