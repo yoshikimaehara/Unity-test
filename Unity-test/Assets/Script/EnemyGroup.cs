@@ -8,11 +8,13 @@ public class EnemyGroup : MonoBehaviour {
 
     public List<int> enemyTypeList = new List<int>();
     public List<int> enemyValueList = new List<int>();
-    public List<List<Vector3>> enemyPositionList = new List<List<Vector3>>();
+    
 
+    public List<List<Vector3>> enemyPositionList = new List<List<Vector3>>();
     private List<List<Enemy>> enemy = new List<List<Enemy>>();        // enemyClass List
     private List<List<GameObject>> enemyObj = new List<List<GameObject>>();     // enemy GameObjectList
     private List<Vector3> posList = new List<Vector3>();
+
                  
 	// Use this for initialization
 	void Start () {
