@@ -43,8 +43,7 @@ public class Author : MonoBehaviour,IAutohr
     //      移動できなかった場合はfalseを返す。
     public bool AttemptMove(int direction)
     {
-        int dirX = 1;   //directionによってX軸の方向を設定する。
-        int dirY = 1;   //directionによってY軸の方向を設定する。
+
         inverseMoveTime = 1f / moveTime;
         timer = startTime;
 

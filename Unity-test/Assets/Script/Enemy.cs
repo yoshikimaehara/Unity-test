@@ -8,11 +8,11 @@ public class Enemy : Author {
     private int nextAction = 0;      // 次の行動 1:移動 2:攻撃
     private int nextDir = 0;
     private bool isActionFinish = true;    //行動完了フラグ true:完了 false:未完了
+    private GameObject gameObject = null;
 
-    private GameObject gameObject;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	}
 	
 	// Update is called once per frame
@@ -64,8 +64,6 @@ public class Enemy : Author {
     // 敵移動中フラグの管理
     private bool AttemptMove(int direction)
     {
-        int dirX = 1;   //directionによってX軸の方向を設定する。
-        int dirY = 1;   //directionによってY軸の方向を設定する。
         inverseMoveTime = 1f / moveTime;
         gameObject.SetActive(true);
         
@@ -88,7 +86,6 @@ public class Enemy : Author {
     {
         float disX;
         float disY;
-        int dis;
 
         disX = playerPosition.x - rb2D.transform.position.x;
         disY = playerPosition.y - rb2D.transform.position.y;
