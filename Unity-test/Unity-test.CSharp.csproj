@@ -79,6 +79,7 @@
     <Compile Include="Assets\Completed\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Completed\Scripts\Wall.cs" />
     <Compile Include="Assets\Interface\IAuthor.cs" />
+    <Compile Include="Assets\Interface\IDirection.cs" />
     <Compile Include="Assets\Script\Author.cs" />
     <Compile Include="Assets\Script\Block.cs" />
     <Compile Include="Assets\Script\BlockList.cs" />
